@@ -32,7 +32,7 @@ jobs:
       - name: Stop only this job's stack (preserve volumes)
         if: always()
         run: docker compose -f compose.local.yaml -f compose.observability.yaml down
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: restore-manifests-only
