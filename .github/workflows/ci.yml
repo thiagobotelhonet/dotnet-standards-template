@@ -33,7 +33,7 @@ jobs:
       - run: node scripts/validate-infra.mjs
       - run: node scripts/test-template.mjs
         if: hashFiles('.template.config/template.json') != ''
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: test-and-dependency-results
@@ -58,7 +58,7 @@ jobs:
       - run: docker run --rm -v "$PWD/artifacts/security:/scan" aquasec/trivy@sha256:62b1e65e8869bc4b4c6aa4fa2b21595256c7c2f6018a9d9ad61caf87187c1969 image --input /scan/api.tar --format cyclonedx --output /scan/sbom.cdx.json
         if: always()
       - run: docker run --rm -v "$PWD:/src:ro" aquasec/trivy@sha256:62b1e65e8869bc4b4c6aa4fa2b21595256c7c2f6018a9d9ad61caf87187c1969 fs --scanners secret --exit-code 1 --skip-dirs /src/artifacts /src
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: supply-chain
