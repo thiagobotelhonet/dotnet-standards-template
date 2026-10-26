@@ -10,7 +10,7 @@ RUN --mount=type=secret,id=modularapi_feed_user,env=MODULARAPI_FEED_USER,require
     dotnet restore src/hosts/Host.Api/Host.Api.csproj
 RUN dotnet publish src/hosts/Host.Api/Host.Api.csproj -c Release -o /app/publish --no-restore /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0.12-noble AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.14-noble AS runtime
 WORKDIR /app
 ENV ASPNETCORE_URLS=http://+:8080 DOTNET_EnableDiagnostics=0
 COPY --from=build /app/publish .
