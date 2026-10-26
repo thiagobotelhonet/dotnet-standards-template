@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:10.0.401 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0.403 AS build
 WORKDIR /src
 # nuget.config só existe no projeto gerado (pacotes ModularApi.* de feed privado); o glob torna a cópia opcional.
 COPY Directory.Build.props Directory.Build.targets Directory.Packages.props global.json nuget.confi[g] ./
